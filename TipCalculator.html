@@ -8,26 +8,59 @@
 <body>
     <h1>Tip Calculator</h1>
     <h2>Total</h2>
+    <p id= total>
+
+    </p>
 
     <h3>Tip</h3>
+    <p id= display-tip>
+
+    </p>
 
 
     <label>
         Bill
-        <input type="number">
+        <input id = bill type="number">
     </label>
     <label>
-        Tip
-        <input type="number">
+        Tip %
+        <input id = tip type="number">
     </label>
     <label>
         Number of People
-        <input type="number">
+        <input id = people type="number">
     </label>
 
 
 <script>
-    
+const billInput = document.querySelector('#bill')
+const tipInput = document.querySelector('#tip')
+const peopleInput = document.querySelector('#people')
+const display = document.querySelector('#display-tip')
+const total = document.querySelector('#total')
+
+billInput.addEventListener('input', calculateTip)
+tipInput.addEventListener('input', calculateTip)
+peopleInput.addEventListener('input', calculateTip)
+
+function calculateTip(){
+    const bill = parseInt(billInput.value)
+    const percent = parseInt(tipInput.value)
+    const people = parseInt(peopleInput.value)
+
+
+    const tip=  bill * percent / 100
+    const totalprice= bill + tip
+
+
+    total.innerHTML = totalprice.tofixed(2)
+    display.innerHTML = tip.toFixed(2)
+
+}
+
+
+
+
 </script>
 </body>
 
