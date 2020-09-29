@@ -4,17 +4,70 @@
     <title>
         Tip Calculator
     </title>
+<style>
+body{
+    font: 20px;
+    font-family: arial;
+    margin: 0;
+    background-color: black;
+}
+
+h1{
+    display: flex;
+	justify-content: center;
+    align-items: center;
+    font-size: 4em;
+	color: #fff;
+}
+h2{
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    
+    color: tomato;
+
+}
+p{
+    display: flex;
+	justify-content: center;
+    margin: 0, 0, 0, 0;
+    color:pink;
+    font-size: 1.5em;
+}
+label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+
+}
+textarea {
+	height: 7em;
+	margin: 0 0 0 0;
+}
+input, textarea {
+	padding: 0.5em;
+	margin: 0 auto 0 auto;
+	width: 10em;
+	font-size: 1em;
+}
+
+
+</style>
 </head>
 <body>
     <h1>Tip Calculator</h1>
     <h2>Total</h2>
     <p id= total>
-
     </p>
 
-    <h3>Tip</h3>
-    <p id= display-tip>
+    <h2>Tip</h2>
+    <p id= display>
+    </p>
 
+    <h2>Amount per person</h2>
+    <p id= amount>000
     </p>
 
 
@@ -36,30 +89,28 @@
 const billInput = document.querySelector('#bill')
 const tipInput = document.querySelector('#tip')
 const peopleInput = document.querySelector('#people')
-const display = document.querySelector('#display-tip')
+const display = document.querySelector('#display')
 const total = document.querySelector('#total')
-
-billInput.addEventListener('input', calculateTip)
-tipInput.addEventListener('input', calculateTip)
-peopleInput.addEventListener('input', calculateTip)
+const amount = document.querySelector('#amount')
 
 function calculateTip(){
     const bill = parseInt(billInput.value)
     const percent = parseInt(tipInput.value)
     const people = parseInt(peopleInput.value)
 
-
     const tip=  bill * percent / 100
     const totalprice= bill + tip
+    const personBill = totalprice / people
 
 
-    total.innerHTML = totalprice.tofixed(2)
-    display.innerHTML = tip.toFixed(2)
-
+    total.innerHTML = '$' + totalprice.toFixed(2)
+    display.innerHTML = '$' + tip.toFixed(2)
+    amount.innerHTML = '$' + personBill.toFixed(2)
 }
 
-
-
+billInput.addEventListener('input', calculateTip)
+tipInput.addEventListener('input', calculateTip)
+peopleInput.addEventListener('input', calculateTip)
 
 </script>
 </body>
